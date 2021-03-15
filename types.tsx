@@ -4,14 +4,21 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  Swipe: undefined;
+  Messages: undefined;
+  Settings: undefined;
+  Profile: undefined;
 };
 
-export type TabOneParamList = {
-  TabOneScreen: undefined;
+export type SwipeParamList = {
+  Swipe: undefined;
 };
-
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+export type SettingsParamList = {
+  Settings: undefined;
+};
+export type MessagesParamList = {
+  Messages: undefined;
+};
+export type ProfileParamList = {
+  Profile: undefined;
 };

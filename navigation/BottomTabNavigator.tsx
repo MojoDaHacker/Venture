@@ -1,9 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
-import { MessagesNavigator, MessagesIcon } from './MessagesNavigator';
-import { SettingsNavigator, SettingsIcon }  from './SettingsNavigator';
-import { ProfileNavigator, ProfileIcon }  from './ProfileNavigator';
-import { SwipeNavigator, SwipeIcon }  from './SwipeNavigator';
+import MessagesScreen  from '../screens/MessagesScreen';
+import SettingsScreen  from '../screens/SettingsScreen';
+import ProfileScreen  from '../screens/ProfileScreen';
+import SwipeScreen  from '../screens/SwipeScreen';
+import { Ionicons, Entypo, FontAwesome } from '@expo/vector-icons';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
@@ -31,23 +32,23 @@ export default function BottomTabNavigator() {
     >
       <BottomTab.Screen
         name="Swipe"
-        component={SwipeNavigator}
+        component={SwipeScreen}
         options={{
-          tabBarIcon: ({ color }) => <SwipeIcon name="home" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="ios-home-sharp" size={24} color={color} />,
         }}
       />
       <BottomTab.Screen
         name="Messages"
-        component={MessagesNavigator}
+        component={MessagesScreen}
         options={{
-          tabBarIcon: ({ color }) => <MessagesIcon name="message" color={color} />,
+          tabBarIcon: ({ color }) => <Entypo name="message" size={24} color={color} />,
         }}
       />
       <BottomTab.Screen
         name="Profile"
-        component={ProfileNavigator}
+        component={ProfileScreen}
         options={{
-          tabBarIcon: ({ color }) => <ProfileIcon name="person" color={color} />,
+          tabBarIcon: ({ color }) => <FontAwesome name="gear" size={24} color={color} />,
         }}
       />
     </BottomTab.Navigator>

@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Image, ScrollView, StyleSheet as Styles } from 'react-native';
+import { Image, ScrollView, StyleSheet as Styles , TouchableHighlight} from 'react-native';
 import StyleSheet from '../constants/Styles';
 import { Text, View } from '../components/Themed';
+import { useLinkProps } from '@react-navigation/native';
 
 const { Container, Row, Col } = StyleSheet
 
-export default function MessagesScreen() {
+export default function MessagesScreen(props) {
   const testArr = [0,1,2,4,5,6,7,8,9,107,8,9,10]
 
   return (
@@ -22,15 +23,17 @@ export default function MessagesScreen() {
         <View style={{ margin: 6 }}><Text>Recent Matches</Text></View>
         <ScrollView bounces={false}>
           {testArr.map((val, i) => (
-            <View key={i} style={[{display: 'flex', flexDirection: 'row', borderWidth: .2, paddingHorizontal: 6}]}>
-              <View>
-                <Image style={styles.img} source={require("../assets/images/pic1.jpg")}/>
+            <TouchableHighlight onPress={() => props.navigation.navigate('Conversation')}>
+              <View key={i} style={[{display: 'flex', flexDirection: 'row', borderWidth: .2, paddingHorizontal: 6}]}>
+                <View>
+                  <Image style={styles.img} source={require("../assets/images/pic1.jpg")}/>
+                </View>
+                  <View style={{display: 'flex', justifyContent: 'space-around', padding: 16}}>
+                    <Text>Firstname Lastname</Text>
+                    <Text>Hello How are you? {i}</Text>
+                  </View>
               </View>
-              <View style={{display: 'flex', justifyContent: 'space-around', padding: 16}}>
-                <Text>Firstname Lastname</Text>
-                <Text>Hello How are you? {i}</Text>
-              </View>
-            </View>
+            </TouchableHighlight>
           ))}
         </ScrollView>
       </View>

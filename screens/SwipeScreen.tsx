@@ -1,48 +1,38 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import { Text, View } from '../components/Themed';
-import { StyleSheet, Image, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
 import Window from '../constants/Layout'
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import SwipeCard from '../components/SwipeCard'
+import { Ionicons } from '@expo/vector-icons';
+import InfoCard from '../components/InfoCard';
 
 const {window} = Window
 
-export default function SwipeInterface(params: object) {
+export default function SwipeScreen(props) {
+  const [scrollViewY, setScrollViewY] = useState(0)
+  const cards = [1,2,3,4,5]
+  const scroll = ({nativeEvent: { contentOffset }}) => {
+    setScrollViewY(contentOffset.y)
+  }
+  const { navigation } = props
+
   return (
     <View style={styles.screen}>
-      <View style={styles.controlsContainer}>
+      <TouchableHighlight style={styles.controlsContainer} underlayColor="blue">
         <Ionicons name="refresh" size={30} color="black"/>
-      </View>
-      <ScrollView style={styles.carousel}>
-        <View style={styles.imgContainerWrapper}>
-          <View style={styles.imgContainer}>
-            <Image resizeMode="cover" style={styles.img} source={require('../assets/images/pic1.jpg')} />
-            <View style={styles.sendRequestIcon}>
-              <MaterialCommunityIcons name="compass-rose" size={25} color="black" />
-            </View>
-          </View>
-        </View>
-        <View style={styles.imgContainerWrapper}>
-          <View style={styles.imgContainer}>
-            <Image resizeMode="cover" style={styles.img} source={require('../assets/images/pic1.jpg')} />
-            <View style={styles.sendRequestIcon}>
-              <MaterialCommunityIcons name="compass-rose" size={25} color="black" />
-            </View>
-          </View>
-        </View>
-        <View style={[styles.imgContainerWrapper, {marginBottom: window.height * (.25 * .5)}]}>
-          <View style={styles.imgContainer}>
-            <Image resizeMode="cover" style={styles.img} source={require('../assets/images/pic1.jpg')} />
-            <View style={styles.sendRequestIcon}>
-              <MaterialCommunityIcons name="compass-rose" size={25} color="black" />
-            </View>
-          </View>
-        </View>
-        {/* <Image resizeMode="cover" style={styles.img} source={require('../assets/images/pic2.jpg')} />
-        <Image resizeMode="cover" style={styles.img} source={require('../assets/images/pic3.jpg')} /> */}
+      </TouchableHighlight>
+      <ScrollView style={styles.carousel} contentContainerStyle={{display: 'flex', alignItems: 'center'}} onScroll={scroll}>
+        {cards.map((val, i) => (
+          <>
+            <SwipeCard key={i + 100} scrollY={scrollViewY} navigate={navigation.navigate}/>
+            {i < cards.length - 1 ? (
+              <InfoCard key={i + 10}/>
+            ) : (
+              null
+            )}
+          </>
+        ))}
       </ScrollView>
-      <View style={styles.notesContainer}>
-        <Text>Hello!asdoiasndoansiodansdionsasdasdasdasdasdasdasdasdas</Text>
-      </View>
     </View>
   )
 }
@@ -66,33 +56,6 @@ const styles = StyleSheet.create({
   carousel: {
     position: 'relative',
     padding: 12
-  },
-  sendRequestIcon: {
-    padding: 12,
-    borderRadius: 100,
-    position: 'absolute',
-    right: 25,
-    bottom: 25,
-  },
-  infoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 25,
-    zIndex: 5
-  },
-  imgContainerWrapper: {        // needed to put shadow on img container
-    shadowRadius: 1,
-    shadowColor: 'black',
-    shadowOffset: {width: 1, height: 1},
-    shadowOpacity: .7,
-    borderRadius: 50,
-    marginTop: window.height * (.25 * .5)
-  },
-  imgContainer: {
-    position: 'relative',
-    height: window.height * .75 ,
-    overflow: 'hidden',
-    borderRadius: 50,
   },
   controlsContainer: {
     position: 'absolute',

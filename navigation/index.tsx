@@ -3,9 +3,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
 
-import NotFoundScreen from '../screens/NotFoundScreen';
+import ConversationScreen from '../screens/ConversationScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
+import EventsNavigator from './EventsNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 
 // If you are not familiar with React Navigation, we recommend going through the
@@ -26,8 +27,10 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName="Root" screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Root" component={BottomTabNavigator} />
+    <Stack.Navigator initialRouteName="Root">
+      <Stack.Screen name="Root" component={BottomTabNavigator} options={{headerShown: false}}/>
+      <Stack.Screen name="Events" component={EventsNavigator} />
+      <Stack.Screen name="Conversation" component={ConversationScreen} />
       {/* <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} /> */}
     </Stack.Navigator>
   );

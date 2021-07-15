@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Text, View } from '../components/Themed';
 import { StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Window from '../constants/Layout'
 import SwipeCard from '../components/SwipeCard'
 import { Ionicons } from '@expo/vector-icons';
@@ -17,23 +18,23 @@ export default function SwipeScreen(props) {
   const { navigation } = props
 
   return (
-    <View style={styles.screen}>
-      <TouchableHighlight style={styles.controlsContainer} underlayColor="blue">
+    <SafeAreaView edges={['top']} style={styles.screen}>
+      {/* <TouchableHighlight style={styles.controlsContainer} underlayColor="blue">
         <Ionicons name="refresh" size={30} color="black"/>
-      </TouchableHighlight>
-      <ScrollView style={styles.carousel} contentContainerStyle={{display: 'flex', alignItems: 'center'}} onScroll={scroll}>
+      </TouchableHighlight> */}
+      <ScrollView style={styles.carousel} contentContainerStyle={{display: 'flex', alignItems: 'center'}}>
         {cards.map((val, i) => (
           <>
-            <SwipeCard key={i + 100} scrollY={scrollViewY} navigate={navigation.navigate}/>
+            <SwipeCard key={`a${i}`} scrollY={scrollViewY} navigate={navigation.navigate}/>
             {i < cards.length - 1 ? (
-              <InfoCard key={i + 10}/>
+              <InfoCard key={`b${i}`}/>
             ) : (
               null
             )}
           </>
         ))}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   )
 }
 

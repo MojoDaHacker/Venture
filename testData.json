@@ -1,0 +1,122 @@
+[
+  {
+    "_id": "6069361ab15d0964bcb38033",
+    "age": 30,
+    "name": {
+      "first": "Winnie",
+      "last": "Head"
+    },
+    "email": "winnie.head@undefined.io",
+    "phone": "+1 (981) 518-2617",
+    "address": "215 Java Street, Gratton, Illinois, 5380",
+    "registered": "Tuesday, June 18, 2019 5:44 AM"
+  },
+  {
+    "_id": "6069361a1a9a05c5c1167403",
+    "age": 22,
+    "name": {
+      "first": "Shawn",
+      "last": "Hensley"
+    },
+    "email": "shawn.hensley@undefined.net",
+    "phone": "+1 (874) 438-3458",
+    "address": "502 Dewitt Avenue, National, Tennessee, 8519",
+    "registered": "Thursday, September 24, 2015 8:19 PM"
+  },
+  {
+    "_id": "6069361afc3eb1393ad65414",
+    "age": 26,
+    "name": {
+      "first": "Monique",
+      "last": "Hatfield"
+    },
+    "email": "monique.hatfield@undefined.me",
+    "phone": "+1 (935) 467-3377",
+    "address": "150 Micieli Place, Kiskimere, Wisconsin, 4105",
+    "registered": "Sunday, February 18, 2018 12:17 AM"
+  },
+  {
+    "_id": "6069361a487b67a816870f1c",
+    "age": 21,
+    "name": {
+      "first": "Tammi",
+      "last": "Rowe"
+    },
+    "email": "tammi.rowe@undefined.us",
+    "phone": "+1 (904) 489-2592",
+    "address": "205 Ferry Place, Graball, Guam, 5484",
+    "registered": "Tuesday, April 15, 2014 6:31 PM"
+  },
+  {
+    "_id": "6069361add6e6a8e5a7d1bd6",
+    "age": 26,
+    "name": {
+      "first": "Yvonne",
+      "last": "Scott"
+    },
+    "email": "yvonne.scott@undefined.org",
+    "phone": "+1 (890) 470-3015",
+    "address": "568 Union Avenue, Troy, New York, 9608",
+    "registered": "Thursday, March 19, 2020 5:54 PM"
+  },
+  {
+    "_id": "6069361a80cee08501f879e5",
+    "age": 40,
+    "name": {
+      "first": "Carver",
+      "last": "Savage"
+    },
+    "email": "carver.savage@undefined.ca",
+    "phone": "+1 (835) 594-3280",
+    "address": "917 Madison Place, Bordelonville, Palau, 3023",
+    "registered": "Saturday, April 26, 2014 6:08 PM"
+  },
+  {
+    "_id": "6069361a76b166ed116a5877",
+    "age": 21,
+    "name": {
+      "first": "Iva",
+      "last": "Everett"
+    },
+    "email": "iva.everett@undefined.co.uk",
+    "phone": "+1 (890) 412-3277",
+    "address": "943 Aitken Place, Foxworth, South Carolina, 9300",
+    "registered": "Sunday, November 18, 2018 5:44 PM"
+  },
+  {
+    "_id": "6069361a286d75bbe207a682",
+    "age": 36,
+    "name": {
+      "first": "Chris",
+      "last": "Bentley"
+    },
+    "email": "chris.bentley@undefined.biz",
+    "phone": "+1 (906) 541-2821",
+    "address": "952 Hunterfly Place, Bannock, Michigan, 9793",
+    "registered": "Tuesday, June 20, 2017 10:11 PM"
+  },
+  {
+    "_id": "6069361af525e6f91880c087",
+    "age": 34,
+    "name": {
+      "first": "Hurley",
+      "last": "Wong"
+    },
+    "email": "hurley.wong@undefined.info",
+    "phone": "+1 (818) 418-2404",
+    "address": "203 Perry Place, Floris, American Samoa, 4719",
+    "registered": "Saturday, March 10, 2018 8:35 PM"
+  },
+  {
+    "_id": "6069361a92faaff03d09202a",
+    "age": 37,
+    "name": {
+      "first": "Mayra",
+      "last": "Johnson"
+    },
+    "email": "mayra.johnson@undefined.com",
+    "phone": "+1 (979) 557-3877",
+    "address": "777 King Street, Calpine, New Hampshire, 8715",
+    "registered": "Wednesday, March 16, 2016 11:34 AM"
+  }
+]

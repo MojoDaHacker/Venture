@@ -4,14 +4,20 @@ import styled from 'styled-components/native';
 import Colors from '../constants/Colors';
 
 
-const Container = styled.View`
+const Container = styled.View.attrs(({ styles }) => ({
+  ...styles
+}))`
   flex: 1 1 0;
 `
-const Row = styled.View`
+const Row = styled.View.attrs(({ styles }) => ({
+  ...styles
+}))`
   display: flex;
   flex-direction: row;
 `
-const Col = styled.View`
+const Col = styled.View.attrs(({ styles }) => ({
+  ...styles
+}))`
   padding: 0 12px;
 `
 const Icon = styled.View`

@@ -7,6 +7,8 @@ import ConversationScreen from '../screens/ConversationScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import EventsNavigator from './EventsNavigator';
+import SettingsNavigator from './SettingsNavigator';
+import LandingNavigator from './LandingNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 
 // If you are not familiar with React Navigation, we recommend going through the
@@ -27,10 +29,12 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName="Root">
+    <Stack.Navigator initialRouteName="Landing">
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{headerShown: false}}/>
       <Stack.Screen name="Events" component={EventsNavigator} />
       <Stack.Screen name="Conversation" component={ConversationScreen} />
+      <Stack.Screen name="Settings" component={SettingsNavigator} />
+      <Stack.Screen name="Landing" component={LandingNavigator} options={{headerShown: false}} />
       {/* <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} /> */}
     </Stack.Navigator>
   );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, ScrollView, StyleSheet as Styles , TouchableHighlight} from 'react-native';
+import { Image, ScrollView, StyleSheet as Styles , Pressable,} from 'react-native';
 import StyleSheet from '../constants/Styles';
 import { Text, View } from '../components/Themed';
 import { useLinkProps } from '@react-navigation/native';
@@ -15,7 +15,7 @@ export default function MessagesScreen(props) {
         <View style={{margin: 6, }}><Text>New Matches</Text></View>
         <ScrollView bounces={false} style={{flexGrow: 0}} horizontal>
           {testArr.map((val, i) => (
-            <Image key={i} style={styles.img} source={require("../assets/images/pic1.jpg")} />
+            <Pressable onPress={() => props.navigation.navigate('Conversation')}><Image key={`c${i}`} style={styles.img} source={require("../assets/images/pic1.jpg")} /></Pressable>
           ))}
         </ScrollView>
       </View>
@@ -23,8 +23,8 @@ export default function MessagesScreen(props) {
         <View style={{ margin: 6 }}><Text>Recent Matches</Text></View>
         <ScrollView bounces={false}>
           {testArr.map((val, i) => (
-            <TouchableHighlight onPress={() => props.navigation.navigate('Conversation')}>
-              <View key={i} style={[{display: 'flex', flexDirection: 'row', borderWidth: .2, paddingHorizontal: 6}]}>
+            <Pressable onPress={() => props.navigation.navigate('Conversation')}>
+              <View key={`c${i}`} style={[{display: 'flex', flexDirection: 'row', borderWidth: .2, paddingHorizontal: 6}]}>
                 <View>
                   <Image style={styles.img} source={require("../assets/images/pic1.jpg")}/>
                 </View>
@@ -33,7 +33,7 @@ export default function MessagesScreen(props) {
                     <Text>Hello How are you? {i}</Text>
                   </View>
               </View>
-            </TouchableHighlight>
+            </Pressable>
           ))}
         </ScrollView>
       </View>

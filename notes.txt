@@ -1,0 +1,11 @@
+User Tasks
+PM = Potential Match
+
+
+
+____________________________________________________________
+-- Screens
+-- -- SwipeScreen
+X -- -- -- See PM Pics
+X -- -- -- Refresh Selection of PM
+X -- -- -- Send Event Proposal to PM

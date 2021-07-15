@@ -20,7 +20,7 @@ const AboutMeBadge = (props) => {
   }
 
   return (
-    <View style={{backgroundColor: 'rgba(46, 236, 59, .5)', borderRadius: 100, padding: 12}}>
+    <View style={{backgroundColor: 'rgba(46, 236, 59, .5)', borderRadius: 100, margin: 6, padding: 12, height: 'auto', flex: 0}}>
       <Text>{aboutOptions[props.num]}</Text>
     </View>
   )

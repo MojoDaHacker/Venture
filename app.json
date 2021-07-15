@@ -4,14 +4,17 @@
     "slug": "venture",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/ios/yezzylogo.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/ios/yezzylogo@3x.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "facebookScheme": "fb3904798486263112",
+    "facebookAppId": "3904798486263112",
+    "facebookDisplayName": "Venture",
     "updates": {
       "fallbackToCacheTimeout": 0
     },

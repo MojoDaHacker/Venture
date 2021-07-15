@@ -2,6 +2,8 @@ export type RootStackParamList = {
   Root: undefined;
   Events: undefined;
   Conversation: undefined;
+  Settings: undefined;
+  Landing: undefined;
   NotFound: undefined;
 };
 
@@ -22,11 +24,18 @@ export type SwipeParamList = {
   Swipe: undefined;
 };
 export type SettingsParamList = {
-  Settings: undefined;
+  ChangeSettings: undefined;
+  Media: undefined;
+  Info: undefined;
+};
+export type LandingParamList = {
+  Landing: undefined,
+  Register: undefined,
+  Login: undefined,
 };
 export type MessagesParamList = {
   Messages: undefined;
-  Conversations: undefined;
+  Conversation: undefined;
 };
 export type ProfileParamList = {
   Profile: undefined;

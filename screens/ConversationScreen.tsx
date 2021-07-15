@@ -4,7 +4,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import Styles from '../constants/Styles';
 import { Text, View } from '../components/Themed';
 
-export default function ProfileScreen() {
+export default function ConversationScreen() {
   const messages = [1,2,3,4,5,6,7,8,9,0,11,22,334,546,57,86,]
   const [userText, setUserText] = useState("")
 

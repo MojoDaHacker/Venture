@@ -10,7 +10,7 @@ const {window} = Window
 const InfoCard = props => {
 
   return (
-    <View style={{padding: 12, margin: 6, width: '100%', borderWidth: 1, borderRadius: 25}}>
+    <View style={{padding: 12, margin: 6, width: '100%', borderRadius: 25}}>
       <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around', margin: 12 }}>
         <AboutMeBadge num={4}/>
         <AboutMeBadge num={5}/>

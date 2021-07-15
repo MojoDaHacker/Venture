@@ -14,9 +14,9 @@ console.log(props.scrollY)
     <View style={styles.cardContainerWrapper}>
       <View style={styles.cardContainer}>
         <Image style={styles.img} source={require('../assets/images/pic1.jpg')} />
-        <TouchableHighlight style={styles.sendRequestIcon} underlayColor='blue' onPress={() => props.navigate('Events')}>
+        {/* <TouchableHighlight style={styles.sendRequestIcon} underlayColor='blue' onPress={() => props.navigate('Events')}>
           <MaterialCommunityIcons name="compass-rose" size={25} color="black" />
-        </TouchableHighlight>
+        </TouchableHighlight> */}
       </View>
     </View>
   )

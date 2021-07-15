@@ -18,12 +18,10 @@ export default function MessagesNavigator() {
       <Messages.Screen
         name="Messages"
         component={MessagesScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
       />
       <Messages.Screen
         name="Conversation"
         component={ConversationScreen}
-        options={{ headerTitle: 'Tab Two Title' }}
       />
     </Messages.Navigator>
   );

@@ -5,8 +5,7 @@ import Styles from '../constants/Styles';
 // import { Text, View } from '../components/Themed';
 import { Container, Row, Col, Icon } from '../components/StyledComponents';
 
-export default function ProfileScreen(props) {
-  const onPress = () => props.navigation.navigate('Settings', {screen: 'ChangeSettings'})
+export default function MediaScreen(props) {
   return (
     <Container>
       <Row style={{flex: 2, justifyContent: 'center', alignItems: 'center'}}>
@@ -18,17 +17,17 @@ export default function ProfileScreen(props) {
       </Row>
       <Row style={{flex: 1}}>
         <Col style={{flex: 1}}>
-          <Icon as={Pressable} style={styles.controlsContainer}>
+          <Icon as={Pressable} onPress={() => props.navigation.navigate('Settings')} style={styles.controlsContainer}>
             <FontAwesome name="gear" size={25}/>
           </Icon>
         </Col>
         <Col style={{flex: 1, justifyContent: 'center'}}>
-          <Icon as={Pressable} style={styles.controlsContainer}>
+          <Icon as={Pressable} onPress={() => props.navigation.navigate('Media')} style={styles.controlsContainer}>
             <FontAwesome name="camera" size={25}/>
           </Icon>
         </Col>
         <Col style={{flex: 1}}>
-          <Icon as={Pressable} style={styles.controlsContainer}>
+          <Icon as={Pressable} onPress={() => props.navigation.navigate('Info')} style={styles.controlsContainer}>
             <FontAwesome name="pencil" size={25}/>
           </Icon>
         </Col>

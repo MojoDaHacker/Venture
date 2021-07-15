@@ -17,7 +17,7 @@ export default function EventsNavigator() {
 
   return (
     <Events.Navigator
-      initialRouteName="Events"
+      headerMode='none'
       // tabBarOptions={{
       //   showLabel: false,
       //   activeTintColor: Colors[colorScheme].tint,

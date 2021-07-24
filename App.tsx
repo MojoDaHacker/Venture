@@ -7,7 +7,7 @@ import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 
-import { store } from './store/store'
+import store from './store/store'
 import { Provider } from 'react-redux'
 
 import AuthContext from './contexts/FirebaseAuth';
@@ -17,7 +17,7 @@ export default function App() {
   const colorScheme = useColorScheme();
 
   if (!isLoadingComplete) {
-    return <ActivityIndicator size="small" color="#999999" />;
+    return <ActivityIndicator size="small" color="#9999999" />;
   } else {
     return (
       <Provider store={store}>

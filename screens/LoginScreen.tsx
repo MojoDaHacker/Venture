@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button, TextInput, View, Text } from 'react-native';
 // import { Text, View } from '../components/Themed';
 import { Container, Row, Col, Icon } from '../components/StyledComponents';
+import { useDispatch } from 'react-redux';
 
 const styles = {
   container:{
@@ -17,6 +18,9 @@ const styles = {
 export default function LoginScreen({ navigation }) {
   const [userInput, onUserChange] = React.useState();
   const [passInput, onPassChange] = React.useState();
+  const dispatch = useDispatch()
+
+  const onSubmit = () => dispatch({ type: 'user/authenticationStateChanged' })
 
   return (
     <Container styles={styles.container}>
@@ -44,7 +48,7 @@ export default function LoginScreen({ navigation }) {
           />
           <Button
             title="Log In"
-            onPress={() => null}
+            onPress={onSubmit}
           />
         </Col>
       </Row>

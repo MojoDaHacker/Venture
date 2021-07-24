@@ -2,6 +2,7 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import ConversationScreen from '../screens/ConversationScreen';
 import { RootStackParamList } from '../types';
@@ -28,13 +29,20 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+  const { isSignedIn } = useSelector(state => state.currentUser)
+
   return (
     <Stack.Navigator initialRouteName="Landing">
-      <Stack.Screen name="Root" component={BottomTabNavigator} options={{headerShown: false}}/>
-      <Stack.Screen name="Events" component={EventsNavigator} />
-      <Stack.Screen name="Conversation" component={ConversationScreen} />
-      <Stack.Screen name="Settings" component={SettingsNavigator} />
-      <Stack.Screen name="Landing" component={LandingNavigator} options={{headerShown: false}} />
+      {isSignedIn ? (
+        <>
+          <Stack.Screen name="Root" component={BottomTabNavigator} options={{headerShown: false}}/>
+          <Stack.Screen name="Events" component={EventsNavigator} />
+          <Stack.Screen name="Conversation" component={ConversationScreen} />
+          <Stack.Screen name="Settings" component={SettingsNavigator} />
+        </>
+      ) : (
+        <Stack.Screen name="Landing" component={LandingNavigator} options={{headerShown: false}} />
+      )}
       {/* <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} /> */}
     </Stack.Navigator>
   );

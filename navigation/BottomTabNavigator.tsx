@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
+import MatchDetailsScreen  from '../screens/MatchDetailsScreen';
 import MessagesScreen  from '../screens/MessagesScreen';
 import ProfileScreen  from '../screens/ProfileScreen';
 import SwipeScreen  from '../screens/SwipeScreen';
@@ -20,7 +21,7 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Swipe"
+      initialRouteName="MatchDetails"
       tabBarOptions={{
         showLabel: false,
         activeTintColor: Colors[colorScheme].tint,
@@ -48,6 +49,13 @@ export default function BottomTabNavigator() {
       <BottomTab.Screen
         name="Profile"
         component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ color }) => <FontAwesome name="gear" size={24} color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="MatchDetails"
+        component={MatchDetailsScreen}
         options={{
           tabBarIcon: ({ color }) => <FontAwesome name="gear" size={24} color={color} />,
         }}

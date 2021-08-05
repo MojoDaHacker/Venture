@@ -30,16 +30,9 @@ export default function EventsScreen(props) {
           <View style={{ margin: 6, padding: 12, backgroundColor: 'red', borderRadius: 100 }}><Text>Daring</Text></View>
         </ScrollView>
       </View>
-      <View style={{margin: 12}}>
-        <Text>{events.length} Events</Text>
-      </View>
-      <ScrollView contentContainerStyle={{display: 'flex'}}>
+      <ScrollView style={styles.carousel} contentContainerStyle={{display: 'flex', alignItems: 'center'}}>
         {events.map((val, i) => (
-          <>
-            <View style={{ borderTopWidth: 1, borderBottomWidth: 1 }}>
-              <TouchableHighlight onPress={() => props.navigation.navigate('ConfirmEvent')}><Event key={i} /></TouchableHighlight>
-            </View>
-          </>
+          <SwipeCard key={`a${i}`} scrollY={scrollViewY}/>
         ))}
       </ScrollView>
     </View>

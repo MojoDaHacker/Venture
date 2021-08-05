@@ -27,8 +27,8 @@ export default function EventsNavigator() {
       //   }
       // }}
     >
-      <Events.Screen name="Events" component={EventsScreen} />
       <Events.Screen name="ConfirmEvent" component={ConfirmEventScreen} />
+      <Events.Screen name="Events" component={EventsScreen} />
     </Events.Navigator>
   );
 }

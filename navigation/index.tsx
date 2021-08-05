@@ -32,7 +32,7 @@ function RootNavigator() {
   const { isSignedIn } = useSelector(state => state.currentUser)
 
   return (
-    <Stack.Navigator initialRouteName="Landing">
+    <Stack.Navigator initialRouteName="Root">
       {isSignedIn ? (
         <>
           <Stack.Screen name="Root" component={BottomTabNavigator} options={{headerShown: false}}/>

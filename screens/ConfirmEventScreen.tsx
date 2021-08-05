@@ -38,7 +38,7 @@ const ConfirmEventScreen = props => {
       </View>
       <View style={{flexShrink: 1}}>
         <Button
-          title="Continue to Payment"
+          title="Continue to Matches"
           onPress={() => Alert.alert('Button Pressed!')}
         />
       </View>

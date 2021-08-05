@@ -12,6 +12,7 @@ export type BottomTabParamList = {
   Messages: undefined;
   Settings: undefined;
   Profile: undefined;
+  MatchDetails: undefined;
 };
 
 export type EventsParamList = {

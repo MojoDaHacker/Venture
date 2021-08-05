@@ -24,14 +24,7 @@ export default function SwipeScreen(props) {
       </TouchableHighlight> */}
       <ScrollView style={styles.carousel} contentContainerStyle={{display: 'flex', alignItems: 'center'}}>
         {cards.map((val, i) => (
-          <>
-            <SwipeCard key={`a${i}`} scrollY={scrollViewY} navigate={navigation.navigate}/>
-            {i < cards.length - 1 ? (
-              <InfoCard key={`b${i}`}/>
-            ) : (
-              null
-            )}
-          </>
+          <SwipeCard key={`a${i}`} scrollY={scrollViewY} navigate={navigation.navigate}/>
         ))}
       </ScrollView>
     </SafeAreaView>

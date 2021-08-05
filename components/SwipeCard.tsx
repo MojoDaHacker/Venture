@@ -8,8 +8,6 @@ const {window} = Window
 
 const SwipeCard = props => {
 
-console.log(props.scrollY)
-
   return (
     <View style={styles.cardContainerWrapper}>
       <View style={styles.cardContainer}>
@@ -18,12 +16,33 @@ console.log(props.scrollY)
           <MaterialCommunityIcons name="compass-rose" size={25} color="black" />
         </TouchableHighlight> */}
       </View>
+      <View style={styles.eventInfoContainer}>
+          <Text style={{margin: 25, color: 'red'}}>SkyDiving</Text>
+          <Text style={{margin: 25, color: 'red'}}>$15</Text>
+        </View>
+      <View style={styles.eventCrowdContainer}>
+        <Image style={styles.smallImg} source={require('../assets/images/pic1.jpg')}/>
+        <Image style={styles.smallImg} source={require('../assets/images/pic1.jpg')}/>
+        <Image style={styles.smallImg} source={require('../assets/images/pic1.jpg')}/>
+        <Image style={styles.smallImg} source={require('../assets/images/pic1.jpg')}/>
+        <Image style={styles.smallImg} source={require('../assets/images/pic1.jpg')}/>
+        <Image style={styles.smallImg} source={require('../assets/images/pic1.jpg')}/>
+      </View>
     </View>
   )
 }
 export default SwipeCard
 
 const styles = StyleSheet.create({
+  eventInfoContainer: {
+    backgroundColor: 'transparent',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    zIndex: 1,
+    position: 'absolute'
+  },
   sendRequestIcon: {
     backgroundColor: 'white',
     padding: 12,
@@ -41,6 +60,7 @@ const styles = StyleSheet.create({
     // marginTop: window.height * (.25 * .5),
     width: '100%',
     height: window.height * .75 ,
+    margin: 35
   },
   cardContainer: {
     flex: 1,
@@ -51,5 +71,18 @@ const styles = StyleSheet.create({
   img: {
     width: '100%',
     height: '100%',
-  }
-})
+  },
+  eventCrowdContainer : {
+    display: 'flex',
+    flexDirection: 'row',
+    backgroundColor: "transparent",
+    position: 'absolute',
+    paddingHorizontal: 5,
+    width: '100%',
+    bottom: -35,
+  },
+  smallImg : {
+    borderRadius: 50,
+    width: 65,
+    height: 65,
+  }})

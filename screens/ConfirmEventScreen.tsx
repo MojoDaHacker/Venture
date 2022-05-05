@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, Image, Button, Alert } from 'react-native';
+import { ScrollView, Image, Button, Alert, StyleSheet } from 'react-native';
 import { View, Text} from '../components/Themed';
 import Dimensions from '../constants/Layout';
 
@@ -12,21 +12,30 @@ const ConfirmEventScreen = props => {
         <Text style={{ margin: 12 }}>Event Title</Text>
         <Image resizeMode="cover" style={{flex: 1, borderRadius: 15, width: '75%', height: '100%'}} source={require('../assets/images/event1.jpeg')}/>
       </View>
-      <View style={{flex: 2}}>
+      <View style={{flex: 2, padding: 12}}>
         <ScrollView bounces={false}>
+          <View>
+            <Text style={styles.sectionTitle}>Event Details</Text>
+          </View>
           <View>
             <Text>Match Profile Pic</Text>
             <View style={{margin: 12, padding: 12}}>
               <Text>- 1 All Day Pass</Text>
-              <Text>- 1 Board Rentals</Text>
+              <Text>- 1 Board Rental</Text>
             </View>
           </View>
           <View>
             <Text>Match Profile Pic</Text>
             <View style={{margin: 12, padding: 12}}>
               <Text>- 1 All Day Pass</Text>
-              <Text>- 1 Board Rentals</Text>
+              <Text>- 1 Board Rental</Text>
             </View>
+          </View>
+          <View>
+            <Text style={styles.sectionTitle}>Additional Items</Text>
+          </View>
+          <View>
+            <Text style={styles.sectionTitle}>Reviews</Text>
           </View>
         </ScrollView>
       <View style={{flexShrink: 1, margin: 12}}>
@@ -48,3 +57,10 @@ const ConfirmEventScreen = props => {
 }
 
 export default ConfirmEventScreen
+
+const styles = StyleSheet.create({
+  sectionTitle : {
+    fontWeight: 'bold',
+    fontSize: 32
+  }
+});

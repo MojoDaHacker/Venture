@@ -27,4 +27,17 @@ export default StyleSheet.create({
     width: window.width,
     height: window.height
   }
-})
+});
+
+const theme = {
+  primary: {
+    backgroundColor: "#57d8b3"
+  },
+  link: {
+    backgroundColor: "transparent",
+    textColor: "#57d8b3"
+  }
+}
+export {
+  theme
+};

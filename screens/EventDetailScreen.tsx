@@ -4,6 +4,7 @@ import { StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
 import Window from '../constants/Layout'
 import SwipeCard from '../components/SwipeCard'
 import EventTile from '../components/EventTile'
+import Event from '../components/Event'
 import Slider from '../components/slider'
 import { Ionicons } from '@expo/vector-icons';
 import InfoCard from '../components/InfoCard';
@@ -42,14 +43,7 @@ export default function EventsScreen(props) {
   return (
     <View style={styles.screen}>
       <ScrollView>
-        <EventTile />
-        <EventTile />
-        <EventTile />
-        <EventTile />
-        <EventTile />
-        <EventTile />
-        <EventTile />
-        <EventTile />
+        <Event />
       </ScrollView>
     </View>
   )

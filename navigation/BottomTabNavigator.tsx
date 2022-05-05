@@ -21,7 +21,7 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="MatchDetails"
+      initialRouteName="Swipe"
       tabBarOptions={{
         showLabel: false,
         activeTintColor: Colors[colorScheme].tint,

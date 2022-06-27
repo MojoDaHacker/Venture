@@ -1,6 +1,6 @@
 export type RootStackParamList = {
-  Root: undefined;
-  Events: undefined;
+  Venture: undefined;
+  Event: undefined;
   Conversation: undefined;
   Settings: undefined;
   Landing: undefined;
@@ -8,7 +8,7 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  Swipe: undefined;
+  Events: undefined;
   Messages: undefined;
   Settings: undefined;
   Profile: undefined;
@@ -16,9 +16,13 @@ export type BottomTabParamList = {
 };
 
 export type EventsParamList = {
-  Events: undefined;
-  ScheduleEvent: undefined;
-  ConfirmEvent: undefined;
+  EventParticipants: undefined;
+  EventDetails: undefined;
+  EventBilling: undefined;
+  PaymentSelection: undefined;
+  ParticipantProfile: undefined;
+  // ScheduleEvent: undefined;
+  // ConfirmEvent: undefined;
 }
 
 export type SwipeParamList = {
@@ -30,13 +34,14 @@ export type SettingsParamList = {
   Info: undefined;
 };
 export type LandingParamList = {
-  Landing: undefined,
+  LandingRoot: undefined,
   Register: undefined,
   Login: undefined,
 };
-export type MessagesParamList = {
-  Messages: undefined;
-  Conversation: undefined;
+export type ConversationParamList = {
+  ConversationRoot: undefined;
+  ConversationDetailsModal: undefined;
+  Report: undefined;
 };
 export type ProfileParamList = {
   Profile: undefined;

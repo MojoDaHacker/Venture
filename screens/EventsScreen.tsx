@@ -1,69 +1,108 @@
-import React, { useState } from 'react'
-import { Text, View } from '../components/Themed';
-import { StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
-import Window from '../constants/Layout'
-import SwipeCard from '../components/SwipeCard'
-import EventTile from '../components/EventTile'
-import Slider from '../components/slider'
-import { Ionicons } from '@expo/vector-icons';
-import InfoCard from '../components/InfoCard';
+import React, { useState } from "react";
+import { Text, View, Image } from "../components/Themed";
+import {
+  StyleSheet,
+  ScrollView,
+  TouchableHighlight,
+  Pressable,
+} from "react-native";
+import Window from "../constants/Layout";
+import SwipeCard from "../components/SwipeCard";
+import EventsSection from "../components/EventsSection";
+import Tile from "../components/EventTile";
 
-const {window} = Window
+const { window } = Window;
 
 export default function EventsScreen(props) {
-  const [scrollViewY, setScrollViewY] = useState(0)
-  const events = [1,2,3,4,5,9,6,7,8,9,0,4,7,6,3,4,5,6,7,8,6,4,5]
-  // const scroll = ({nativeEvent: {contentOffset}}) => {
-  //   setScrollViewY(contentOffset.y)
-  // }
-  const filterBadges = [
-    'Conventional',
-    'Moderate',
-    'Daring',
-  ]
-
-  // return (
-  //   <View style={styles.screen}>
-  //     <View>
-  //       <ScrollView contentContainerStyle={{ flex: 1, justifyContent: 'center', margin: 6 }} horizontal>
-  //         <View style={{ margin: 6, padding: 12, backgroundColor: 'lightgreen', borderRadius: 100 }}><Text>Conventional</Text></View>
-  //         <View style={{ margin: 6, padding: 12, backgroundColor: 'orange', borderRadius: 100 }}><Text>Moderate</Text></View>
-  //         <View style={{ margin: 6, padding: 12, backgroundColor: 'red', borderRadius: 100 }}><Text>Daring</Text></View>
-  //       </ScrollView>
-  //     </View>
-  //     <ScrollView style={styles.carousel} contentContainerStyle={{display: 'flex', alignItems: 'center'}}>
-  //       {events.map((val, i) => (
-  //         <SwipeCard key={`a${i}`} scrollY={scrollViewY}/>
-  //       ))}
-  //     </ScrollView>
-  //   </View>
-  // )
+  const data = [
+    {
+      sectionName: "Highlights",
+      RenderComponent: RenderItem,
+    },
+    {
+      sectionName: "Best Sellers",
+      RenderComponent: SwipeCard,
+    },
+    {
+      sectionName: "Trending",
+      RenderComponent: TrendingEvents,
+    },
+    {
+      sectionName: "Staff Picks",
+      RenderComponent: TrendingEvents,
+    },
+  ];
 
   return (
     <View style={styles.screen}>
       <ScrollView>
-        <EventTile />
-        <EventTile />
-        <EventTile />
-        <EventTile />
-        <EventTile />
-        <EventTile />
-        <EventTile />
-        <EventTile />
+        {data.map((e, i) => (
+          <EventsSection
+            key={i}
+            {...e}
+            navigateFn={props.navigation.navigate}
+          />
+        ))}
       </ScrollView>
     </View>
-  )
+  );
 }
+
+const RenderItem = ({ navigate }) => {
+  const size = 100;
+  const items = [0, 1, 2, 3, 4];
+
+  return (
+    <View margin="s">
+      <ScrollView horizontal>
+        {items.map((e) => (
+          <Tile key={e} size={size} navigate={navigate}>
+            <Image
+              style={{
+                width: size,
+                height: size,
+                borderRadius: size / 2,
+                marginHorizontal: 12,
+              }}
+            />
+          </Tile>
+        ))}
+      </ScrollView>
+    </View>
+  );
+};
+
+const TrendingEvents = ({ navigate }) => {
+  const size = 200;
+  const items = [0, 1, 2, 3, 4];
+
+  return (
+    <View margin="s">
+      <ScrollView horizontal>
+        {items.map((e, i) => (
+          <Tile key={i} size={size} navigate={navigate}>
+            <Image
+              style={{
+                width: size,
+                height: size,
+                borderRadius: size / 10,
+                backgroundColor: "lightgray",
+                marginHorizontal: 12,
+              }}
+            ></Image>
+          </Tile>
+        ))}
+      </ScrollView>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    padding: 10,
-    // justifyContent: '',
   },
   img: {
-    width: '100%',
-    height: '100%',
-
-  }
-})
+    width: "100%",
+    height: "100%",
+  },
+});

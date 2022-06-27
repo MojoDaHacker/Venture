@@ -1,30 +1,14 @@
-import React from 'react';
-import { Image, StyleSheet } from 'react-native';
-import { View, Text } from './Themed';
+import React from "react";
+import { Pressable } from "react-native";
+import { View, Text } from "./Themed";
 
-const EventTile = props => {
+const EventTile = ({ size, navigate, children }) => {
   return (
-    <View style={styles.tile}>
-      <Text style={styles.tileTitle}>Title</Text>
-      <Text>Trending Emoji</Text>
-    </View>
-  )
-}
+    <Pressable onPress={() => navigate("Event")}>
+      {children}
+    </Pressable>
+  );
+};
 
-export default EventTile
+export default EventTile;
 
-const styles = StyleSheet.create({
-  tile: {
-    padding: 5,
-    margin: 12,
-    height: 150,
-    flexDirection: 'column',
-    borderWidth: 2,
-    borderRadius: 10
-  },
-  tileTitle: {
-    color: '#888',
-    fontSize: 48,
-    fontWeight: 'bold'
-  }
-});

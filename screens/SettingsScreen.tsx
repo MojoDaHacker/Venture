@@ -1,67 +1,80 @@
-import * as React from 'react';
+import * as React from "react";
+import { StyleSheet, Image, Pressable } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
-import Styles from '../constants/Styles';
-import { Text, View } from '../components/Themed';
-import { Container, Row, Col, Icon } from '../components/StyledComponents';
-import { StyleSheet, SectionList } from 'react-native';
-
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
+import Styles from "../constants/Styles";
+import { Text, View } from "../components/Themed";
+import { Container, Row, Col, Icon } from "../components/StyledComponents";
 
 export default function SettingsScreen(props) {
-  const DATA = [
-    {
-      title: "Account Settings",
-      data: ["Pizza", "Burger", "Risotto"]
-    },
-    {
-      title: "Discovery",
-      data: ["French Fries", "Onion Rings", "Fried Shrimps"]
-    },
-    {
-      title: "Notifications",
-      data: ["Water", "Coke", "Beer"]
-    },
-    {
-      title: "Community",
-      data: ["Cheese Cake", "Ice Cream"]
-    }
-  ];
-
+  const onPress = () =>
+    props.navigation.navigate("Settings", { screen: "ChangeSettings" });
   return (
-    <View style={styles.container}>
-      <SectionList
-      sections={DATA}
-      keyExtractor={(item, index) => item + index}
-      renderItem={({ item }) => <Item title={item} />}
-      renderSectionHeader={({ section: { title } }) => (
-        <Text style={styles.header}>{title}</Text>
-      )}
-    />
+    <View style={{ flex: 1 }}>
+      <Container>
+        <Row style={{ flex: 2, justifyContent: "center", alignItems: "center" }}>
+          <Col>
+            <View style={{ marginHorizontal: "auto" }}>
+              <Image
+                style={{ width: 250, height: 250, borderRadius: 150 }}
+                source={require("../assets/images/pic1.jpg")}
+              />
+            </View>
+          </Col>
+        </Row>
+        <Row style={{ flex: 1 }}>
+          <Col style={{ flex: 1, alignItems: "center" }}>
+            <Icon as={Pressable} style={styles.controlsContainer}>
+              <FontAwesome name="gear" size={25} />
+            </Icon>
+          </Col>
+          <Col
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          >
+            <Icon as={Pressable} style={styles.controlsContainer}>
+              <FontAwesome name="ticket" size={25} />
+            </Icon>
+          </Col>
+          <Col style={{ flex: 1, alignItems: "center" }}>
+            <Icon as={Pressable} style={styles.controlsContainer}>
+              <FontAwesome name="pencil" size={25} />
+            </Icon>
+          </Col>
+        </Row>
+        <Row style={{ flex: 1 }}>
+          <Col
+            style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+          >
+            <View>
+              <Text>Matthew McKenzie</Text>
+              <Text>25</Text>
+            </View>
+            <View>
+              <Text>Marketing Coordinator</Text>
+            </View>
+            <View>
+              <Text>University Of Central Florida</Text>
+            </View>
+          </Col>
+        </Row>
+      </Container>
     </View>
   );
 }
 
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // paddingTop: StatusBar.currentHeight,
-    marginHorizontal: 16
+  controlsContainer: {
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    width: 60,
+    height: 60,
+    marginLeft: 12,
+    marginBottom: 16,
+    borderRadius: 100,
+    borderWidth: 0,
+    shadowColor: "black",
+    shadowRadius: 3,
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.4,
   },
-  item: {
-    backgroundColor: "#f9c2ff",
-    padding: 20,
-    marginVertical: 8
-  },
-  header: {
-    fontSize: 32,
-    backgroundColor: "#fff"
-  },
-  title: {
-    fontSize: 24
-  }
 });

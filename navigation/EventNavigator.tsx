@@ -1,11 +1,15 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import EventsScreen from '../screens/EventsScreen';
-import ConfirmEventScreen from '../screens/ConfirmEventScreen';
+import EventDetailsScreen from '../screens/EventDetailsScreen';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import { EventsParamList } from '../types';
+import EventBillingScreen from '../screens/EventBillingScreen';
+import PaymentMethodSelectionScreen from '../screens/PaymentMethodSelectionScreen';
+import EventParticipantsScreen from '../screens/EventParticipantsScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
@@ -18,6 +22,7 @@ export default function EventsNavigator() {
   return (
     <Events.Navigator
       headerMode='none'
+      initialRouteName='EventDetails'
       // tabBarOptions={{
       //   showLabel: false,
       //   activeTintColor: Colors[colorScheme].tint,
@@ -27,8 +32,11 @@ export default function EventsNavigator() {
       //   }
       // }}
     >
-      <Events.Screen name="ConfirmEvent" component={ConfirmEventScreen} />
-      <Events.Screen name="Events" component={EventsScreen} />
+      <Events.Screen name="PaymentSelection" component={PaymentMethodSelectionScreen} />
+      <Events.Screen name="EventBilling" component={EventBillingScreen} />
+      <Events.Screen name="EventDetails" component={EventDetailsScreen} />
+      <Events.Screen name="EventParticipants" component={EventParticipantsScreen} options={{ headerShown: true, headerTitle: "", headerBackTitleVisible: false }}/>
+      <Events.Screen name="ParticipantProfile" component={ProfileScreen} options={{ headerShown: true, headerTitle: "", headerBackTitleVisible: false }}/>
     </Events.Navigator>
   );
 }

@@ -4,13 +4,13 @@
     "slug": "venture",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/ios/yezzylogo.png",
+    "icon": "./assets/ios/venture_splash.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/ios/yezzylogo@3x.png",
+      "image": "./assets/ios/venture_splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#B3BFAA"
     },
     "facebookScheme": "fb3904798486263112",
     "facebookAppId": "3904798486263112",

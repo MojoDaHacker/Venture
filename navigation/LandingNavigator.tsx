@@ -15,9 +15,9 @@ const Landing = createStackNavigator<LandingParamList>();
 
 export default function LandingNavigator() {
   return (
-    <Landing.Navigator initialRouteName="Landing">
+    <Landing.Navigator initialRouteName="LandingRoot">
       <Landing.Screen
-        name="Landing"
+        name="LandingRoot"
         component={LandingScreen}
         options={{
           headerShown: false

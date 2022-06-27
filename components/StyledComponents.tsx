@@ -23,6 +23,7 @@ const Col = styled.View.attrs(({ styles }) => ({
 const Form = styled.View.attrs(({ styles }) => ({
   ...styles,
 }))`
+  flex: 1;
   padding: 0 12px;
 `;
 
@@ -34,27 +35,10 @@ const FormGroup = styled.View.attrs(({ styles }) => ({
 
 const FormButton = ({ variant, title, onPress, style }) => {
   const styles = {
-    submit: {
-      flexShrink: 1,
-      // borderWidth: 1,
-      backgroundColor: "lightgreen",
-      textAlign: "center",
-      textAlignVertical: "center",
-    },
-    trouble: {
-      flexGrow: 1,
-      text: {
-        textAlign: "right",
-        textAlignVertical: "bottom",
-      },
-    },
     baseText: {
-      // borderWidth: 1,
+      color: Colors[variant].text,
       margin: 12,
-    },
-    link: {
-      backgroundColor: "blue",
-    },
+    }
   };
 
   return (
@@ -68,19 +52,22 @@ const FormButton = ({ variant, title, onPress, style }) => {
   );
 };
 
+FormButton.defaultProps = {
+  variant: "primary"
+}
+
 const FormButtonStyledComponent = styled.TouchableOpacity.attrs(({ style }) => ({
   style
 }))`
-  background: ${({ variant, theme }) => (theme[variant] && theme[variant].backgroundColor) || theme.primary.backgroundColor};
-  align-items: flex-end;
-  justify-content: flex-end;
+  color: ${ ({ variant }) => Colors[variant].text };
+  background: ${ ({ variant }) => Colors[variant].background };
+  width: auto;
   border-radius: 10px;
 `;
 
 const FormControl = ({ value, handleChange }) => {
   return (
     <FormControlStyledComponent
-      // style={styles.input}
       onChangeText={handleChange}
       value={value}
     />
@@ -90,7 +77,8 @@ const FormControl = ({ value, handleChange }) => {
 const FormControlStyledComponent = styled.TextInput.attrs(({ styles }) => ({
   ...styles,
 }))`
-  background-color: #e3e3e3;
+  border-bottom-color: #e3e3e3;
+  border-bottom-width: 2px;
   min-height: 36px;
   padding-left: 12px;
 `;

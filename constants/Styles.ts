@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
-import Window from './Layout'
+import Window from "./Layout";
 
-const { window } = Window
+const { window } = Window;
 
 export default StyleSheet.create({
   Container: {
@@ -25,19 +25,6 @@ export default StyleSheet.create({
   },
   Img: {
     width: window.width,
-    height: window.height
-  }
-});
-
-const theme = {
-  primary: {
-    backgroundColor: "#57d8b3"
+    height: window.height,
   },
-  link: {
-    backgroundColor: "transparent",
-    textColor: "#57d8b3"
-  }
-}
-export {
-  theme
-};
+});

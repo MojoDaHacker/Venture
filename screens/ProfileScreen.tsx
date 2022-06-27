@@ -1,64 +1,57 @@
-import * as React from 'react';
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
-import { FontAwesome } from "@expo/vector-icons";
-import Styles from '../constants/Styles';
-// import { Text, View } from '../components/Themed';
-import { Container, Row, Col, Icon } from '../components/StyledComponents';
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import React from "react";
+import { ScrollView, Image, Button, Alert, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity } from "../components/Themed";
+import Dimensions from "../constants/Layout";
 
-export default function ProfileScreen(props) {
-  const onPress = () => props.navigation.navigate('Settings', {screen: 'ChangeSettings'})
+const ProfileScreen = (props) => {
+  const {
+    window: { width, height },
+  } = Dimensions;
+
   return (
-    <Container>
-      <Row style={{flex: 2, justifyContent: 'center', alignItems: 'center'}}>
-        <Col>
-          <View style={{marginHorizontal: 'auto'}}>
-            <Image style={{ width: 150, height: 150, borderRadius: 100}} source={require("../assets/images/pic1.jpg")}/>
+    <View style={{ flex: 1 }}>
+      <View
+        style={{
+          flex: 4,
+          borderBottomWidth: 1,
+          borderBottomColor: "lightgray",
+        }}
+      >
+        <Image
+          resizeMode="cover"
+          style={{ flex: 1, width: "100%" }}
+          source={require("../assets/images/event1.jpeg")}
+        />
+      </View>
+      <View padding="s" style={{ flex: 2 }}>
+        <ScrollView bounces={false}>
+          <View>
+            <View>
+              <Text header margin="xs">Name, Age</Text>
+            </View>
+            <View style={{ marginLeft: 12 }}>
+              <Text margin="xs">Bio</Text>
+              <Text margin="xs">A member since 2012</Text>
+            </View>
           </View>
-        </Col>
-      </Row>
-      <Row style={{flex: 1}}>
-        <Col style={{flex: 1}}>
-          <Icon as={Pressable} style={styles.controlsContainer}>
-            <FontAwesome name="gear" size={25}/>
-          </Icon>
-        </Col>
-        <Col style={{flex: 1, justifyContent: 'center'}}>
-          <Icon as={Pressable} style={styles.controlsContainer}>
-            <FontAwesome name="camera" size={25}/>
-          </Icon>
-        </Col>
-        <Col style={{flex: 1}}>
-          <Icon as={Pressable} style={styles.controlsContainer}>
-            <FontAwesome name="pencil" size={25}/>
-          </Icon>
-        </Col>
-      </Row>
-      <Row style={{flex: 1}}>
-        <Col style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-          <View><Text>Matthew McKenzie</Text><Text>25</Text></View>
-          <View><Text>Marketing Coordinator</Text></View>
-          <View><Text>University Of Central Florida</Text></View>
-        </Col>
-      </Row>
-    </Container>
+          <View>
+            <Text header margin="xs">
+              Latest Adventure
+            </Text>
+          </View>
+        </ScrollView>
+      </View>
+      <View style={{ flexShrink: 1, flexDirection: "row", justifyContent: "space-around" }}>
+        <TouchableOpacity>
+          <Ionicons name="ios-person-add-sharp" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <MaterialIcons name="report" size={24} color="red" />
+        </TouchableOpacity>
+      </View>
+    </View>
   );
-}
+};
 
-
-const styles = StyleSheet.create({
-  controlsContainer: {
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 60,
-    height: 60,
-    marginLeft: 12,
-    marginBottom: 16,
-    borderRadius: 100,
-    borderWidth: 1,
-    shadowColor: 'black',
-    shadowRadius: 3,
-    shadowOffset: {width: 3, height: 3},
-    shadowOpacity: .4,
-  },
-});
+export default ProfileScreen;

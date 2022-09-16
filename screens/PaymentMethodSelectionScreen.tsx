@@ -3,8 +3,7 @@ import { Text, View } from "../components/Themed";
 import { StyleSheet, ScrollView, TouchableHighlight } from "react-native";
 import Window from "../constants/Layout";
 import SwipeCard from "../components/SwipeCard";
-import EventTile from "../components/EventTile";
-import Event from "../components/Event";
+import { Event, EventTile } from "../components/EventComponents";
 import Slider from "../components/slider";
 import { Ionicons } from "@expo/vector-icons";
 import InfoCard from "../components/InfoCard";
@@ -38,11 +37,11 @@ export default function PaymentMethodSelectionScreen(props) {
               <FormControl value={null} onChange={() => null} />
             </FormGroup>
             <FormGroup>
-              <FormLabel>Zip Code</FormLabel>
+              <FormLabel>Billing Zip Code</FormLabel>
               <FormControl value={null} onChange={() => null} />
             </FormGroup>
             <FormGroup style={{ marginTop: 24, flexDirection: "row" }}>
-              <FormButton title="Complete Booking" onPress={() => props.navigation.navigate("Messages")} />
+              <FormButton title="Complete Booking" onPress={() => props.navigation.navigate("ConfirmedPurchase")} />
               {/* <FormButton
                 variant="link"
                 style={{ alignItems: "flex-end", justifyContent: "flex-end" }}

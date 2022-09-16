@@ -1,67 +1,79 @@
+import { Divider } from "@rneui/themed";
 import * as React from "react";
-import { StyleSheet, Image, Pressable } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import Styles from "../constants/Styles";
-import { Text, View } from "../components/Themed";
-import { Container, Row, Col, Icon } from "../components/StyledComponents";
+import { FlatList, Pressable } from "react-native";
+import { Text, View, Image } from "../components/Themed";
 
-export default function SettingsScreen(props) {
-  const onPress = () =>
-    props.navigation.navigate("Settings", { screen: "ChangeSettings" });
+export default function SettingsScreen({ navigation }) {
+  const onPress = ({ navigateTo }) =>
+    navigation.navigate("Settings", { screen: "ChangeSettings" });
+
+  const DATA_ONE = [
+    {
+      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+      title: "View profile",
+      onPress: () => navigation.navigate("Setting" , { screen: "Profile" })
+    },
+    {
+      id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+      title: "Push notifications",
+      onPress: null
+    },
+    {
+      id: "58694a0f-3da1-471f-bd96-145571e29d72",
+      title: "Email updates",
+      onPress: null
+    },
+  ];
+  const DATA_TWO = [
+    {
+      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+      title: "About Venture",
+      onPress: null
+    },
+    {
+      id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+      title: "Get help",
+      onPress: null
+    },
+    {
+      id: "58694a0f-3da1-471f-bd96-145571e29d72",
+      title: "Give us feedback",
+      onPress: null
+    },
+  ];
+
+  const renderItem = ({ item, ...rest }) => (
+    <>
+      <ListItem onPress={item.onPress} title={item.title} />
+      <Divider />
+    </>
+  )
+
   return (
     <View style={{ flex: 1 }}>
-      <Container>
-        <Row style={{ flex: 2, justifyContent: "center", alignItems: "center" }}>
-          <Col>
-            <View style={{ marginHorizontal: "auto" }}>
-              <Image
-                style={{ width: 250, height: 250, borderRadius: 150 }}
-                source={require("../assets/images/pic1.jpg")}
-              />
-            </View>
-          </Col>
-        </Row>
-        <Row style={{ flex: 1 }}>
-          <Col style={{ flex: 1, alignItems: "center" }}>
-            <Icon as={Pressable} style={styles.controlsContainer}>
-              <FontAwesome name="gear" size={25} />
-            </Icon>
-          </Col>
-          <Col
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Icon as={Pressable} style={styles.controlsContainer}>
-              <FontAwesome name="ticket" size={25} />
-            </Icon>
-          </Col>
-          <Col style={{ flex: 1, alignItems: "center" }}>
-            <Icon as={Pressable} style={styles.controlsContainer}>
-              <FontAwesome name="pencil" size={25} />
-            </Icon>
-          </Col>
-        </Row>
-        <Row style={{ flex: 1 }}>
-          <Col
-            style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-          >
-            <View>
-              <Text>Matthew McKenzie</Text>
-              <Text>25</Text>
-            </View>
-            <View>
-              <Text>Marketing Coordinator</Text>
-            </View>
-            <View>
-              <Text>University Of Central Florida</Text>
-            </View>
-          </Col>
-        </Row>
-      </Container>
+      <FlatList
+        data={DATA_ONE}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
+      <FlatList
+        data={DATA_TWO}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+const ListItem = ({ title, onPress }) => (
+  <Pressable onPress={onPress}>
+    <View margin="s0">
+      <Text>{title}</Text>
+    </View>
+  </Pressable>
+);
+
+const styles = {
   controlsContainer: {
     backgroundColor: "white",
     justifyContent: "center",
@@ -77,4 +89,4 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 3, height: 3 },
     shadowOpacity: 0.4,
   },
-});
+};

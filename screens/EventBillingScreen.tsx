@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import { Text, View } from "../components/Themed";
-import { StyleSheet, ScrollView, TouchableHighlight, Button } from "react-native";
+import { ScrollView, Button } from "react-native";
 import Window from "../constants/Layout";
-import SwipeCard from "../components/SwipeCard";
-import EventTile from "../components/EventTile";
-import Event from "../components/Event";
-import Slider from "../components/slider";
-import { Ionicons } from "@expo/vector-icons";
-import InfoCard from "../components/InfoCard";
 import {
   Form,
   FormControl,
   FormGroup,
   FormLabel,
 } from "../components/StyledComponents";
-
-const { window } = Window;
+import Counter from "../components/Counter";
+import { Divider } from "@rneui/base";
 
 export default function EventBookingScreen(props) {
+  const testData = {
+    charge: {
+      fees: 25.24,
+      taxes: 40.24,
+    },
+  };
+
   return (
     <View style={styles.screen}>
       <ScrollView>
-        <View>
+        <View padding="s0">
           <Text header>Personal Information</Text>
           <Form>
             <FormGroup>
@@ -38,13 +39,29 @@ export default function EventBookingScreen(props) {
             </FormGroup>
           </Form>
           <Text>Do you have any guests?</Text>
+          <Counter />
         </View>
       </ScrollView>
-      <View style={{ flexShrink: 1, margin: 12 }}>
-        <Text>Subtotal</Text>
-        <Text>Fees</Text>
-        <Text>Taxes</Text>
-        <Text>Total</Text>
+      <View margin="s0" style={{ flexShrink: 1 }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <View>
+            <Text>Fees</Text>
+            <Text>Taxes</Text>
+          </View>
+          <View>
+            <Text>${testData.charge.fees}</Text>
+            <Text>${testData.charge.taxes}</Text>
+          </View>
+        </View>
+        <Divider  style={{ marginBottom: 6, marginTop: 6 }} />
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <View>
+            <Text>Total</Text>
+          </View>
+          <View>
+            <Text>${testData.charge.taxes + testData.charge.fees}</Text>
+          </View>
+        </View>
       </View>
       <View style={{ flexShrink: 1 }}>
         <Button
@@ -56,13 +73,12 @@ export default function EventBookingScreen(props) {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = {
   screen: {
     flex: 1,
-    padding: 10,
   },
   img: {
     width: "100%",
     height: "100%",
   },
-});
+};

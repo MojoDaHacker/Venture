@@ -1,33 +1,31 @@
-import { Entypo } from '@expo/vector-icons';
-import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react';
-import EditInfoScreen from '../screens/EditInfoScreen';
-import MediaScreen from '../screens/MediaScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import { SettingsParamList } from '../types';
-
+import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
+import EditInfoScreen from "../screens/EditInfoScreen";
+import MediaScreen from "../screens/MediaScreen";
+import ProfileScreen from "../screens/ProfileScreen";
+import { SettingsParamList } from "../types";
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
 const Settings = createStackNavigator<SettingsParamList>();
 
-
-
 export default function SettingsNavigator() {
   return (
-    <Settings.Navigator headerMode="none">
+    <Settings.Navigator initialRouteName="Info" headerMode="none">
+      <Settings.Screen name="Info" component={EditInfoScreen} />
+      <Settings.Screen name="Media" component={MediaScreen} />
       <Settings.Screen
-        name="Info"
-        component={EditInfoScreen}
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          headerShown: true,
+          headerBackTitleVisible: false,
+        }}
       />
-      <Settings.Screen
-        name="Media"
-        component={MediaScreen}
-      />
-      <Settings.Screen
+      {/* <Settings.Screen
         name="ChangeSettings"
         component={SettingsScreen}
-      />
+      /> */}
     </Settings.Navigator>
   );
 }

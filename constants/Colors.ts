@@ -10,33 +10,14 @@ const TRANSPARENT = "transparent";
 // Splash Screen background color
 const LAUREL_GREEN = "#B3BFAA";
 
-const LIME_GREEN = "#78cc3f";
+const OLIVINE = "#92B677";
 const FLUORESCENT_BLUE = "#71F5EA";
 const VENETIAN_RED = "#C70808";
 const LEMON_GLACIER = "#F2FA07";
 
-const sizes = [6, 12, 18, 24, 32];
+const sizes = [ 6, 12, 18, 24, 32 ];
 
 export default {
-  sizes: {
-    none: 0,
-    xs: sizes[0],
-    s: sizes[1],
-    m: sizes[2],
-    l: sizes[3],
-    xl: sizes[4],
-  },
-  textVariants: {
-    header: {
-      fontFamily: "Lato_400Regular",
-      fontSize: sizes[3],
-      fontWeight: "bold",
-    },
-    body: {
-      fontFamily: "Lato_300Light",
-      fontSize: sizes[1],
-    },
-  },
   light: {
     text: BLACK,
     background: WHITE,
@@ -52,8 +33,8 @@ export default {
     tabIconSelected: TINT_COLOR_DARK,
   },
   primary: {
-    text: WHITE,
-    background: LIME_GREEN,
+    text: BLACK,
+    background: OLIVINE,
     tint: TINT_COLOR_DARK,
     tabIconDefault: LIGHT_GRAY,
     tabIconSelected: TINT_COLOR_DARK,
@@ -74,7 +55,7 @@ export default {
   },
   error: {
     text: WHITE,
-    background: BLACK,
+    background: VENETIAN_RED,
     tint: TINT_COLOR_DARK,
     tabIconDefault: LIGHT_GRAY,
     tabIconSelected: TINT_COLOR_DARK,
@@ -88,6 +69,13 @@ export default {
   },
   link: {
     text: IOS_BLUE_HYPERLINK,
+    background: TRANSPARENT,
+    tint: TINT_COLOR_DARK,
+    tabIconDefault: LIGHT_GRAY,
+    tabIconSelected: TINT_COLOR_DARK,
+  },
+  transparent: {
+    text: BLACK,
     background: TRANSPARENT,
     tint: TINT_COLOR_DARK,
     tabIconDefault: LIGHT_GRAY,

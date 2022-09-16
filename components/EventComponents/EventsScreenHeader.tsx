@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { Pressable } from "react-native";
-import { View, Image, Text } from "./Themed";
+import { View, Image, Text } from "../Themed";
 
 const EventsScreenHeader = props => {
   return (

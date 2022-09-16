@@ -21,6 +21,7 @@ export type EventsParamList = {
   EventBilling: undefined;
   PaymentSelection: undefined;
   ParticipantProfile: undefined;
+  ConfirmedPurchase: undefined;
   // ScheduleEvent: undefined;
   // ConfirmEvent: undefined;
 }
@@ -29,6 +30,7 @@ export type SwipeParamList = {
   Swipe: undefined;
 };
 export type SettingsParamList = {
+  Profile: undefined;
   ChangeSettings: undefined;
   Media: undefined;
   Info: undefined;

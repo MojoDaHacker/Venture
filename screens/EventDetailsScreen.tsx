@@ -1,69 +1,88 @@
+import { FontAwesome } from "@expo/vector-icons";
+import { Divider } from "@rneui/base";
 import React from "react";
-import { ScrollView, Image, Button, Alert, StyleSheet } from "react-native";
+import { ScrollView, Image, Button } from "react-native";
+import { EventReview, EventStatusPanel, EventDetailsImageSection } from "../components/EventComponents";
 import { View, Text } from "../components/Themed";
 import Dimensions from "../constants/Layout";
 
-const ConfirmEventScreen = (props) => {
+const images = [
+  require("../assets/images/highlight1.jpeg"),
+  require("../assets/images/highlight2.jpeg"),
+  // require("../assets/images/highlight3.jpeg"),
+  // require("../assets/images/highlight4.jpeg"),
+  // require("../assets/images/highlight5.jpeg"),
+  // require("../assets/images/highlight6.jpeg"),
+  // require("../assets/images/highlight7.jpeg"),
+  // require("../assets/images/highlight8.jpeg"),
+  // require("../assets/images/highlight9.jpeg"),
+  // require("../assets/images/highlight10.jpeg"),
+];
+
+const EventDetailsScreen = (props) => {
   const {
     window: { width, height },
   } = Dimensions;
 
   return (
     <View style={{ flex: 1 }}>
-      <View
-        style={{
-          height: "100%",
-          flex: 1,
-          borderBottomWidth: 1,
-          borderBottomColor: "lightgray",
-        }}
-      >
-        <Image
-          resizeMode="cover"
-          style={{ flex: 1, width: "100%", height: "100%" }}
-          source={require("../assets/images/event1.jpeg")}
-        />
-      </View>
-      <View style={{ flex: 2, padding: 12 }}>
+      <EventDetailsImageSection/>
+      <View style={{ flex: 2 }}>
         <ScrollView bounces={false}>
-          <View>
+          <View padding="_s2" style={{ minHeight: 100 }}>
             <View>
-              <Text header margin="xs">
-                Event Details
+              <Text header margin="_s3">
+                Hiking the Grand Canyon
               </Text>
             </View>
-            <View style={{ marginLeft: 12 }}>
-              <Text margin="xs">Event Name</Text>
-              <Text margin="xs">Event Description</Text>
-              <Text margin="xs">Event Date</Text>
-              <Text margin="xs">Event Address</Text>
-            </View>
+            <EventStatusPanel />
           </View>
-          <View>
+          <Divider />
+          <View padding="_s2" style={{ minHeight: 100 }}>
             <View>
-              <Text header margin="xs">
-                Included Items
-              </Text>
-            </View>
-            <View style={{ marginLeft: 12 }}>
-              <Text>Match Profile Pic</Text>
-              <View style={{ margin: 12, padding: 12 }}>
-                <Text>- 1 All Day Pass</Text>
-                <Text>- 1 Board Rental</Text>
+              <View margin="_s3">
+                <Text header>About</Text>
               </View>
-            </View>
-            <View style={{ marginLeft: 12 }}>
-              <Text>Match Profile Pic</Text>
-              <View style={{ margin: 12, padding: 12 }}>
-                <Text>- 1 All Day Pass</Text>
-                <Text>- 1 Board Rental</Text>
+              <View margin="s0">
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Dictum at tempor commodo ullamcorper a lacus vestibulum sed
+                  arcu. Congue quisque egestas diam in arcu.
+                </Text>
               </View>
             </View>
           </View>
-          <View>
-            <Text header margin="xs">
+          <Divider />
+          <View padding="_s2" style={{ minHeight: 100 }}>
+            <Text header margin="_s3">
               Reviews
             </Text>
+            <View>
+              <View style={{ alignItems: "center" }}>
+                <FontAwesome
+                  name="star"
+                  style={{ position: "relative" }}
+                  size={250}
+                  color="orange"
+                />
+                <Text
+                  style={{
+                    fontSize: 40,
+                    position: "absolute",
+                    top: "40%",
+                    backgroundColor: "transparent",
+                  }}
+                >
+                  4 / 5
+                </Text>
+              </View>
+              <View>
+                <EventReview margin="_s2" />
+                <EventReview margin="_s2" />
+                <EventReview margin="_s2" />
+              </View>
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -77,4 +96,4 @@ const ConfirmEventScreen = (props) => {
   );
 };
 
-export default ConfirmEventScreen;
+export default EventDetailsScreen;

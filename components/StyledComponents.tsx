@@ -1,36 +1,19 @@
 import * as React from "react";
 import { Text, View, TextInput } from "react-native";
 import styled from "styled-components/native";
-import Colors from "../constants/Colors";
-
-const Container = styled.View.attrs(({ styles }) => ({
-  ...styles,
-}))`
-  flex: 1 1 0;
-`;
-const Row = styled.View.attrs(({ styles }) => ({
-  ...styles,
-}))`
-  display: flex;
-  flex-direction: row;
-`;
-const Col = styled.View.attrs(({ styles }) => ({
-  ...styles,
-}))`
-  padding: 0 12px;
-`;
+import { Colors, Spacings } from "../constants";
 
 const Form = styled.View.attrs(({ styles }) => ({
   ...styles,
 }))`
   flex: 1;
-  padding: 0 12px;
+  padding: 0 ${Spacings.none}px;
 `;
 
 const FormGroup = styled.View.attrs(({ styles }) => ({
   ...styles,
 }))`
-  margin: 12px;
+  margin: ${Spacings._s1}px;
 `;
 
 const FormButton = ({ variant, title, onPress, style }) => {
@@ -80,19 +63,19 @@ const FormControlStyledComponent = styled.TextInput.attrs(({ styles }) => ({
   border-bottom-color: #e3e3e3;
   border-bottom-width: 2px;
   min-height: 36px;
-  padding-left: 12px;
+  padding-left: ${Spacings._s2}px;
 `;
 
 const FormLabel = styled.Text.attrs(({ styles }) => ({
   ...styles,
 }))`
-  margin: 12px;
+  margin-left: ${Spacings._s2}px;
 `;
 
 const FormText = styled.View.attrs(({ styles }) => ({
   ...styles,
 }))`
-  padding: 0 12px;
+  padding: 0 ${Spacings._s2}px;
 `;
 
 const Icon = styled.View`
@@ -106,9 +89,6 @@ const Icon = styled.View`
 `;
 
 export {
-  Container,
-  Row,
-  Col,
   Icon,
   Form,
   FormLabel,

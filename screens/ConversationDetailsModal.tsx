@@ -8,13 +8,13 @@ const ConversationDetailsModal = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flex: 2, alignItems: "center" }}>
-        <View margin="s">
+        <View margin="_s2">
           <Image style={{ width: 200, height: 200, borderRadius: 200 / 2 }} />
         </View>
-        <View margin="s">
+        <View margin="_s2">
           <Text>Organizer</Text>
         </View>
-        <View margin="s" style={{ width: "75%" }}>
+        <View margin="_s2" style={{ width: "75%" }}>
           <Text style={{ textAlign: "center" }}>
             I am a free soul, that loves to venture outside. With me you can be
             assured that you will have the time of your life in a safe and
@@ -22,7 +22,7 @@ const ConversationDetailsModal = ({ navigation }) => {
           </Text>
         </View>
         <View
-          margin="s"
+          margin="_s2"
           style={{
             width: "100%",
             flexDirection: "row",

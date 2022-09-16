@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import styled from "styled-components/native";
 
-import Colors from "../constants/Colors";
+import { Spacings, Colors, Styles } from "../constants";
 import useColorScheme from "../hooks/useColorScheme";
 
 export function useThemeColor(
@@ -34,8 +34,9 @@ export type ViewProps = ThemeProps & DefaultView["props"];
 
 export function Image({ source, style, rounded, margin, padding }) {
   const _style = {
-    padding: Colors.sizes[padding],
-    margin: Colors.sizes[margin],
+    padding: Spacings[padding],
+    margin: Spacings[margin],
+    borderRadius: rounded ? style.width / 2 : null,
     ...style,
   };
 
@@ -49,27 +50,27 @@ export function Image({ source, style, rounded, margin, padding }) {
 
 export function Text({
   style,
-  size,
+  variant,
+  size = "s0",
   padding,
   margin,
   textAlign,
   lightColor,
   darkColor,
   header,
+  body = "b1",
   ...rest
 }) {
   const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
-  const bodyOrHeaderStyles = header
-    ? Colors.textVariants.header
-    : Colors.textVariants.body;
+  const fontStyle = header ? Styles.header[header] : Styles.body[body];
 
   const _style = {
-    color,
-    fontSize: Colors.sizes[size],
-    padding: Colors.sizes[padding],
-    margin: Colors.sizes[margin],
+    color: variant ? Colors[variant].text : null,
+    fontSize: Spacings[size],
+    padding: Spacings[padding],
+    margin: Spacings[margin],
     textAlign: textAlign,
-    ...bodyOrHeaderStyles,
+    ...fontStyle,
     ...style,
   };
 
@@ -78,6 +79,8 @@ export function Text({
 
 export function View({
   style,
+  align,
+  justify,
   padding,
   margin,
   lightColor,
@@ -90,17 +93,14 @@ export function View({
   );
 
   const _style = {
-    padding: Colors.sizes[padding],
-    margin: Colors.sizes[margin],
+    justifyContent: justify,
+    alignItems: align,
+    padding: Spacings[padding],
+    margin: Spacings[margin],
     ...style,
   };
 
-  return (
-    <DefaultView
-      style={{ backgroundColor, ...Colors.textVariants.body, ..._style }}
-      {...rest}
-    />
-  );
+  return <DefaultView style={{ backgroundColor, ..._style }} {...rest} />;
 }
 
 export function TouchableOpacity({
@@ -117,17 +117,68 @@ export function TouchableOpacity({
   );
 
   const _style = {
-    padding: Colors.sizes[padding],
-    margin: Colors.sizes[margin],
+    padding: Spacings[padding],
+    margin: Spacings[margin],
+    ...style,
+  };
+
+  return <_TouchableOpacity style={{ backgroundColor, ..._style }} {...rest} />;
+}
+
+export function TouchableOpacityButton({
+  style,
+  variant = "primary",
+  size = "s0",
+  padding = "_s2",
+  margin = "_s1",
+  lightColor,
+  darkColor,
+  children,
+  fluid,
+  ...rest
+}) {
+  const backgroundColor = Colors[variant].background;
+
+  const _style = {
+    padding: Spacings[padding],
+    margin: Spacings[margin],
     ...style,
   };
 
   return (
     <_TouchableOpacity
-      style={{ backgroundColor, ...Colors.textVariants.body, ..._style }}
+      style={{ backgroundColor, borderRadius: 10, ..._style }}
       {...rest}
-    />
+    >
+      <View
+        style={{
+          width: fluid ? "100%" : null,
+          flexDirection: "row",
+          justifyContent: "center",
+          backgroundColor: "transparent",
+        }}
+      >
+        {typeof children === "string" ? (
+          <Text variant={variant} size={size}>
+            {children}
+          </Text>
+        ) : (
+          <View variant={variant} size={size} style={{ backgroundColor: "transparent" }}>
+            {children}
+          </View>
+        )}
+      </View>
+    </_TouchableOpacity>
   );
+}
+
+export function Icon({ children, color }){
+
+  return (
+    <>
+      {children}
+    </>
+  )
 }
 
 const spaceDefaults = {

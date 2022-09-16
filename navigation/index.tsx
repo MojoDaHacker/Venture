@@ -5,7 +5,7 @@ import {
 } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
-import { ColorSchemeName } from "react-native";
+import { ColorSchemeName, SafeAreaView } from "react-native";
 import { useSelector } from "react-redux";
 
 import { RootStackParamList } from "../types";
@@ -24,12 +24,20 @@ export default function Navigation({
 }: {
   colorScheme: ColorSchemeName;
 }) {
+  const { isSignedIn } = useSelector((state) => state.currentUser);
+
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
     >
-      <RootNavigator />
+      {isSignedIn ? (
+        <SafeAreaView style={{ flex: 1 }}>
+          <RootNavigator />
+        </SafeAreaView>
+      ) : (
+        <LandingNavigator />
+      )}
     </NavigationContainer>
   );
 }
@@ -39,28 +47,21 @@ export default function Navigation({
 const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
-  const { isSignedIn } = useSelector((state) => state.currentUser);
-
   return (
-    <Stack.Navigator initialRouteName="Venture" screenOptions={{ headerShown: false }}>
-      {isSignedIn ? (
-        <>
-          <Stack.Screen name="Venture" component={BottomTabNavigator}/>
-          <Stack.Screen name="Event" component={EventNavigator} />
-          <Stack.Screen
-            name="Conversation"
-            component={ConversationNavigator}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen name="Settings" component={SettingsNavigator} />
-        </>
-      ) : (
+    <Stack.Navigator
+      initialRouteName="Venture"
+      screenOptions={{ headerShown: false }}
+    >
+      <>
+        <Stack.Screen name="Venture" component={BottomTabNavigator} />
+        <Stack.Screen name="Event" component={EventNavigator} />
         <Stack.Screen
-          name="Landing"
-          component={LandingNavigator}
+          name="Conversation"
+          component={ConversationNavigator}
           options={{ headerShown: false }}
         />
-      )}
+        <Stack.Screen name="Setting" component={SettingsNavigator} />
+      </>
       {/* <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} /> */}
     </Stack.Navigator>
   );

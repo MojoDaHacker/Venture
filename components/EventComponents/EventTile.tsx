@@ -1,6 +1,6 @@
 import React from "react";
 import { Pressable } from "react-native";
-import { View, Text } from "./Themed";
+import { View, Text } from "../Themed";
 
 const EventTile = ({ size, navigate, children }) => {
   return (

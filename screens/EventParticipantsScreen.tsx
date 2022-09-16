@@ -99,7 +99,7 @@ const EventParticipantsScreen = ({ navigation }) => {
 };
 
 const FlatListItem = ({ name, navigateTo }) => (
-  <View padding="m" style={{ flexDirection: "row", alignItems: "center" }}>
+  <View padding = "s0" style={{ flexDirection: "row", alignItems: "center" }}>
     <View>
       <Image
         style={{ width: 50, height: 50, borderRadius: 25 }}

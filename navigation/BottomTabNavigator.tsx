@@ -1,18 +1,18 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import * as React from 'react';
-import MatchDetailsScreen  from '../screens/MatchDetailsScreen';
-import MessagesScreen  from '../screens/MessagesScreen';
-import ProfileScreen  from '../screens/SettingsScreen';
-import SwipeScreen  from '../screens/SwipeScreen';
-// import SwipeScreen  from '../layouts/FullScreenSwipe';
-import { MaterialCommunityIcons, Entypo, FontAwesome } from '@expo/vector-icons';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import * as React from "react";
+import MessagesScreen from "../screens/MessagesScreen";
+import SettingsScreen from "../screens/SettingsScreen";
+import {
+  MaterialCommunityIcons,
+  Entypo,
+  FontAwesome,
+} from "@expo/vector-icons";
 
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import { BottomTabParamList } from '../types';
-import EventsScreen from '../screens/EventsScreen';
-import EventsScreenHeader from '../components/EventsScreenHeader';
-
+import Colors from "../constants/Colors";
+import useColorScheme from "../hooks/useColorScheme";
+import { BottomTabParamList } from "../types";
+import EventsScreen from "../screens/EventsScreen";
+import { EventsScreenHeader } from "../components/EventComponents";
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
@@ -28,17 +28,19 @@ export default function BottomTabNavigator() {
         tabBarShowLabel: false,
         tabBarActiveTintColor: Colors[colorScheme].tint,
         tabBarStyle: {
-          position: 'relative',
-          backgroundColor: 'white',
-          borderTopColor: 'transparent',
-        }
+          position: "relative",
+          backgroundColor: "white",
+          borderTopColor: "transparent",
+        },
       }}
     >
       <BottomTab.Screen
         name="Messages"
         component={MessagesScreen}
         options={{
-          tabBarIcon: ({ color }) => <Entypo name="message" size={24} color={color} />,
+          tabBarIcon: ({ color }) => (
+            <Entypo name="message" size={24} color={color} />
+          ),
         }}
       />
       <BottomTab.Screen
@@ -46,14 +48,22 @@ export default function BottomTabNavigator() {
         component={EventsScreen}
         options={{
           header: (props) => <EventsScreenHeader {...props} />,
-          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="compass-rose" size={36} color={color} />
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="compass-rose"
+              size={36}
+              color={color}
+            />
+          ),
         }}
       />
       <BottomTab.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="Settings"
+        component={SettingsScreen}
         options={{
-          tabBarIcon: ({ color }) => <FontAwesome name="gear" size={24} color={color} />,
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="gear" size={24} color={color} />
+          ),
         }}
       />
     </BottomTab.Navigator>

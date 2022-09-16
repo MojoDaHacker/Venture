@@ -5,7 +5,7 @@ const ListItem = ({ children, pressable, ...rest }) => {
   const RenderComponent = pressable ? TouchableOpacity : View;
 
   return (
-    <RenderComponent margin="none" padding="m" style={{  }} {...rest}>
+    <RenderComponent margin="none" padding = "s0" style={{  }} {...rest}>
       <Text textAlign="center">{children}</Text>
     </RenderComponent>
   );

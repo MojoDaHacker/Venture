@@ -6,6 +6,8 @@ import "firebase/database";
 import "firebase/auth";
 import "firebase/firestore";
 
+import auth from '@react-native-firebase/auth';
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -21,7 +23,22 @@ const firebaseConfig = {
 const AuthContext = React.createContext(null)
 
 const FirebaseAuthProvider = props => {
-  const [user, setUser] = useState(fakeData[2])
+  // Set an initializing state whilst Firebase connects
+  const [initializing, setInitializing] = React.useState(true);
+  const [user, setUser] = React.useState();
+
+  // Handle user state changes
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
+
+  React.useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  if (initializing) return null;
 
   useEffect(() => {
     // if (firebase.apps.length < 1) {
@@ -45,3 +62,4 @@ const FirebaseAuthProvider = props => {
 export default FirebaseAuthProvider
 
 export const useFirebaseAuth = () => useContext(AuthContext)
+

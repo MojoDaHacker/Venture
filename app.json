@@ -18,25 +18,43 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "bundleIdentifier": "com.matthewmckenzie446.venture"
     },
     "android": {
-      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.matthewmckenzie446.venture"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "@react-native-firebase/app"
-    ]
+      "@react-native-firebase/app",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 31,
+            "targetSdkVersion": 31,
+            "buildToolsVersion": "31.0.0"
+          },
+          "ios": {
+            "deploymentTarget": "13.0",
+            "useFrameworks": "static"
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "2e26e706-9820-4720-bf27-1f14a18fcbd0"
+      }
+    }
   }
 }

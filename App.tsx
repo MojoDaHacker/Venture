@@ -1,6 +1,5 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { ActivityIndicator } from "react-native";
 import useCachedResources from "./hooks/useCachedResources";
 import useColorScheme from "./hooks/useColorScheme";

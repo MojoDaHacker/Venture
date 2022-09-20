@@ -5,6 +5,7 @@ import { configureStore } from '@reduxjs/toolkit';
 const asyncInitialStateMiddleware = asyncInitialState.middleware
 
 import eventsReducer, { fetchEvents } from './slices/eventPoolSlice'
+import authReducer from './slices/authSlice'
 
 const currentUserReducer = (state = { isSignedIn : false }, actions) => {
   switch (actions.type) {
@@ -17,7 +18,7 @@ const currentUserReducer = (state = { isSignedIn : false }, actions) => {
 
 const store = configureStore({
   reducer: asyncInitialState.outerReducer(combineReducers({
-    currentUser : currentUserReducer,
+    currentUser : authReducer,
     events: eventsReducer,
     asyncInitialState: asyncInitialState.innerReducer
   })),

@@ -2,9 +2,6 @@ import React, { useState, useEffect, useContext } from 'react'
 import { loginWithFacebook } from '../firebase/loginWithFacebook';
 import fakeData from '../testData.json'
 import firebase from 'firebase/app';
-import "firebase/database";
-import "firebase/auth";
-import "firebase/firestore";
 
 import auth from '@react-native-firebase/auth';
 
@@ -26,35 +23,6 @@ const FirebaseAuthProvider = props => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = React.useState(true);
   const [user, setUser] = React.useState();
-
-  // Handle user state changes
-  function onAuthStateChanged(user) {
-    setUser(user);
-    if (initializing) setInitializing(false);
-  }
-
-  React.useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber; // unsubscribe on unmount
-  }, []);
-
-  if (initializing) return null;
-
-  useEffect(() => {
-    // if (firebase.apps.length < 1) {
-    //   firebase.initializeApp(firebaseConfig);
-    // }
-
-    // loginWithFacebook(firebase)
-    // // Listen for authentication state to change.
-    // firebase.auth().onAuthStateChanged(user => {
-    //   if (user != null) {
-    //     console.log('We are authenticated now!');
-    //     setUser(user)
-    //   }
-    // });
-  }, [])
-
 
   return <AuthContext.Provider children={props.children} value={user} />
 }

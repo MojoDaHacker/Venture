@@ -48,11 +48,12 @@ const FormButtonStyledComponent = styled.TouchableOpacity.attrs(({ style }) => (
   border-radius: 10px;
 `;
 
-const FormControl = ({ value, handleChange }) => {
+const FormControl = ({ value, onChangeText, ...rest }) => {
   return (
     <FormControlStyledComponent
-      onChangeText={handleChange}
+      onChangeText={onChangeText}
       value={value}
+      {...rest}
     />
   );
 };

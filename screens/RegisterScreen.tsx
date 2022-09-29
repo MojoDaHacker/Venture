@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Text, TextInput, Button, View } from "react-native";
-import { useDispatch } from "react-redux";
-// import { Text, View } from '../components/Themed';
+import { View } from "react-native";
+import auth from "@react-native-firebase/auth";
 import {
   Form,
   FormButton,
@@ -13,18 +12,43 @@ import {
 export default function RegisterScreen(props) {
   const [form, onFormChange] = React.useState({
     email: "",
-    user: "",
+    name: "",
     pwd: "",
     dob: "",
   });
-  const handleChange = (name, value) =>
+  const handleChange = (name, value) => {
     onFormChange((state) => ({
       ...state,
       [name]: value,
     }));
+  };
 
-  const dispatch = useDispatch();
-  const onSubmit = () => dispatch({ type: "user/authenticationStateChanged" });
+  const onSubmit = () => {
+    auth()
+      .createUserWithEmailAndPassword(form.email, form.pwd)
+      .then(({ user }) => {
+        user
+          .updateProfile({
+            displayName: form.name,
+          })
+          .catch((err) => console.log("Error occured updating profile."));
+      })
+      .catch((error) => {
+        if (error.code === "auth/email-already-in-use") {
+          console.log("That email address is already in use!");
+        }
+
+        if (error.code === "auth/invalid-email") {
+          console.log("That email address is invalid!");
+        }
+
+        if (error.code === "auth/weak-password") {
+          console.log("Your password is trash!");
+        }
+
+        console.error(error);
+      });
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
@@ -37,10 +61,10 @@ export default function RegisterScreen(props) {
           />
         </FormGroup>
         <FormGroup>
-          <FormLabel>Username</FormLabel>
+          <FormLabel>Name</FormLabel>
           <FormControl
-            value={form.user}
-            handleChange={(value) => handleChange("user", value)}
+            value={form.name}
+            handleChange={(value) => handleChange("name", value)}
           />
         </FormGroup>
         <FormGroup>

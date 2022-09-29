@@ -18,6 +18,7 @@ const ConfirmedPurchaseScreen = ({ navigation }) => {
             </View>
         </View>
         <View style={{ flex: 1 }}>
+            <TouchableOpacityButton onPress={() => navigation.navigate("Conversation")} variant='link'>Go to Event Chat</TouchableOpacityButton>
             <TouchableOpacityButton onPress={() => navigation.navigate("EventDetails")} variant='link'>Back to Event Details</TouchableOpacityButton>
             <TouchableOpacityButton onPress={() => navigation.navigate("Events")} variant='link'>Back to Events</TouchableOpacityButton>
         </View>

@@ -2,43 +2,66 @@ import { Divider } from "@rneui/themed";
 import * as React from "react";
 import { FlatList, Pressable } from "react-native";
 import { Text, View, Image } from "../components/Themed";
+import auth from "@react-native-firebase/auth";
+import { useDispatch } from "react-redux";
+import { signOutUser } from "../store/slices/authSlice";
 
 export default function SettingsScreen({ navigation }) {
+  const dispatch = useDispatch()
   const onPress = ({ navigateTo }) =>
     navigation.navigate("Settings", { screen: "ChangeSettings" });
+
+  const onPressSignOut = ({ navigateTo }) => {
+    auth()
+      .signOut()
+      .then(() => {
+        dispatch(signOutUser());
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log("something went wrong");
+      });
+  };
 
   const DATA_ONE = [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
       title: "View profile",
-      onPress: () => navigation.navigate("Setting" , { screen: "Profile" })
+      onPress: () => navigation.navigate("Setting", { screen: "Profile" }),
     },
     {
       id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
       title: "Push notifications",
-      onPress: null
+      onPress: null,
     },
     {
       id: "58694a0f-3da1-471f-bd96-145571e29d72",
       title: "Email updates",
-      onPress: null
+      onPress: null,
     },
   ];
   const DATA_TWO = [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
       title: "About Venture",
-      onPress: null
+      onPress: null,
     },
     {
       id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
       title: "Get help",
-      onPress: null
+      onPress: null,
     },
     {
       id: "58694a0f-3da1-471f-bd96-145571e29d72",
       title: "Give us feedback",
-      onPress: null
+      onPress: null,
+    },
+  ];
+  const DATA_THREE = [
+    {
+      id: "bd7acbea-c1b5-46c2-aed5-3ad53abb28ba",
+      title: "Sign Out",
+      onPress: onPressSignOut,
     },
   ];
 
@@ -47,7 +70,7 @@ export default function SettingsScreen({ navigation }) {
       <ListItem onPress={item.onPress} title={item.title} />
       <Divider />
     </>
-  )
+  );
 
   return (
     <View style={{ flex: 1 }}>
@@ -58,6 +81,11 @@ export default function SettingsScreen({ navigation }) {
       />
       <FlatList
         data={DATA_TWO}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+      />
+      <FlatList
+        data={DATA_THREE}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
       />

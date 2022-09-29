@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Button, TextInput, View, Text } from "react-native";
-// import { Text, View } from '../components/Themed';
+import { View } from "react-native";
+import auth from "@react-native-firebase/auth"
 import {
   Form,
   FormControl,
@@ -8,21 +8,37 @@ import {
   FormLabel,
   FormButton,
 } from "../components/StyledComponents";
-import { useDispatch } from "react-redux";
 
 export default function LoginScreen({ navigation }) {
-  const [user, changeUser] = React.useState();
+  const [email, changeUser] = React.useState();
   const [pass, changePass] = React.useState();
-  const dispatch = useDispatch();
 
-  const onSubmit = () => dispatch({ type: "user/authenticationStateChanged" });
+  const onSubmit = () => {
+    auth()
+      .signInWithEmailAndPassword(email, pass)
+      .catch(error => {
+        if (error.code === "auth/email-already-in-use") {
+          console.log("That email address is already in use!");
+        }
+
+        if (error.code === "auth/invalid-email") {
+          console.log("That email address is invalid!");
+        }
+
+        if (error.code === "auth/weak-password") {
+          console.log("Your password is trash!");
+        }
+
+        console.error(error);
+      });
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: "white" }}>
       <Form>
         <FormGroup>
-          <FormLabel>Username</FormLabel>
-          <FormControl value={user} handleChange={changeUser} />
+          <FormLabel>Email</FormLabel>
+          <FormControl value={email} handleChange={changeUser} />
         </FormGroup>
         <FormGroup>
           <FormLabel>Password</FormLabel>

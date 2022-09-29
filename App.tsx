@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import { ActivityIndicator } from "react-native";
 import useCachedResources from "./hooks/useCachedResources";
@@ -18,10 +18,21 @@ import {
   Lato_700Bold,
   Lato_900Black,
 } from "@expo-google-fonts/lato";
+import auth from "@react-native-firebase/auth";
+import { changeUser } from "./store/slices/authSlice";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
+
+  const onUserChanged = user => {
+    store.dispatch(changeUser(user.toJSON()))
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onUserChanged(onUserChanged);
+    return subscriber;
+  }, [])
 
   let [fontsLoaded] = useFonts({
     Lato_100Thin,

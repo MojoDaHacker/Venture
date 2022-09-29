@@ -53,8 +53,8 @@ const EventDetailsScreen = (props) => {
               </View>
             </View>
           </View>
-          <Divider />
-          <View padding="_s2" style={{ minHeight: 100 }}>
+          {/* <Divider /> */}
+          {/* <View padding="_s2" style={{ minHeight: 100 }}>
             <Text header margin="_s3">
               Reviews
             </Text>
@@ -83,7 +83,7 @@ const EventDetailsScreen = (props) => {
                 <EventReview margin="_s2" />
               </View>
             </View>
-          </View>
+          </View> */}
         </ScrollView>
       </View>
       <View style={{ flexShrink: 1 }}>

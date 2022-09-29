@@ -5,54 +5,38 @@ import EventsSection from "../components/EventComponents/EventsSection";
 import Tile from "../components/Tile";
 import { Divider } from "@rneui/base";
 import LocationSelector from "../components/LocationSelector";
+import EventCategoryTabs from "../components/EventCategoryTabs";
+import { connect } from "react-redux";
 
-export default function EventsScreen(props) {
-  const data = [
-    {
-      sectionName: "Local Events",
-      RenderComponent: Tile,
-      rounded: true,
-      style: {
-        height: 100,
-        width: 100,
-        borderRadius: 100 / 2,
-      },
-    },
-    {
-      sectionName: "Hosted Adventures",
-      RenderComponent: Tile,
-      style: {
-        height: 500,
-        borderRadius: 25,
-      },
-    },
-    {
-      sectionName: "International Adventures",
-      RenderComponent: Tile,
-      style: {
-        height: 200,
-        width: 200,
-        borderRadius: 25,
-      },
-    },
-  ];
+const mapStateToProps = state => ({
+  events: state.api
+})
+
+export default connect(mapStateToProps)(function EventsScreen({ navigation, events }) {
+  const _events = events.queries["getEvents(undefined)"]?.data
 
   return (
     <View style={styles.screen}>
       <LocationSelector />
-      <Divider width={5} color="lightgray" />
+      <Divider width={3} color="lightgray" />
+      <EventCategoryTabs />
+      <Divider width={3} color="lightgray" />
       <ScrollView>
-        {data.map((e, i) => (
-          <EventsSection
+        {_events?.map((event, i) => (
+          <Tile
             key={i}
-            {...e}
-            navigateFn={props.navigation.navigate}
+            style={{
+              height: 500,
+              borderRadius: 25,
+            }}
+            event={event}
+            navigate={navigation.navigate}
           />
         ))}
       </ScrollView>
     </View>
   );
-}
+})
 
 const styles = StyleSheet.create({
   progress: {},

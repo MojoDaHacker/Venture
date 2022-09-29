@@ -16,6 +16,7 @@ import LandingNavigator from "./LandingNavigator";
 import LinkingConfiguration from "./LinkingConfiguration";
 import ConversationNavigator from "./ConversationNavigator";
 import EventsScreenHeader from "../components/EventsScreenHeader";
+import { useGetEventsQuery } from "../store/slices/apiSlice";
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -24,14 +25,14 @@ export default function Navigation({
 }: {
   colorScheme: ColorSchemeName;
 }) {
-  const { isSignedIn } = useSelector((state) => state.currentUser);
+  const currentUser  = useSelector((state) => state.auth.currentUser);
 
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
     >
-      {isSignedIn ? (
+      {currentUser ? (
         <SafeAreaView style={{ flex: 1 }}>
           <RootNavigator />
         </SafeAreaView>
@@ -47,6 +48,15 @@ export default function Navigation({
 const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+  const {
+    data,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetEventsQuery()
+
+
   return (
     <Stack.Navigator
       initialRouteName="Venture"
